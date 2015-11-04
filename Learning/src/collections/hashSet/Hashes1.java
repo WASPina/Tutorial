@@ -14,6 +14,8 @@ public static void main(String[] args) {
 		coll.add("арбуз");
 		coll.add("банан");
 		coll.add("вишня");
+		coll.add("вишня");
+		coll.add("1");
 		coll.add("груша");
 		coll.add("дыня");
 		coll.add("ежевика");
@@ -21,6 +23,7 @@ public static void main(String[] args) {
 		coll.add("земляника");
 		coll.add("ирис");
 		coll.add("картофель");
+		coll.add("1");
 	
 	
 	for (String x : coll){
