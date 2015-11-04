@@ -4,6 +4,7 @@ import java.util.*;
 //ƒл€ arrayList и linkedList провести 10 тыс€ч вставок, удалений, а также вызовов get и set.
 public class ArrayVSLinkedList1 
 {
+@SuppressWarnings("rawtypes")
 public static void main(String[] args) throws Exception
 {
 		System.out.println(getTimeMsOfInsert(new ArrayList()));
@@ -22,6 +23,7 @@ public static void main(String[] args) throws Exception
     set10000(linkedList);
     remove10000(linkedList);*/
 }
+@SuppressWarnings("rawtypes")
 public static long  getTimeMsOfInsert(List list)
 {
 	Date start = new Date ();
@@ -31,12 +33,14 @@ public static long  getTimeMsOfInsert(List list)
     return i;
 }
 	 
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public static void insert10000(List list)
 {
     for (int i = 0; i<10000; i++)
     list.add(0,new Object());
 }
 
+@SuppressWarnings("rawtypes")
 public static void get10000(List list)
 {
 	for (int i = 0; i<list.size(); i++)
@@ -44,6 +48,7 @@ public static void get10000(List list)
 
 }
 
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public static void set10000(List list)
 {
 	for (int i = 0; i<list.size(); i++)
@@ -51,6 +56,7 @@ public static void set10000(List list)
 
 }
 
+@SuppressWarnings("rawtypes")
 public static void remove10000(List list)
 {
 	for (int i = 0; i<list.size(); )

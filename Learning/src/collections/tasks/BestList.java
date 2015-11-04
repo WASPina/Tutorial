@@ -16,25 +16,29 @@ import java.util.List;
 
 public class BestList
 {
-    public static List  getListForGet()
+    @SuppressWarnings("rawtypes")
+	public static List  getListForGet()
     {
         return new ArrayList();
 
     }
 
-    public static List  getListForSet()
+    @SuppressWarnings("rawtypes")
+	public static List  getListForSet()
     {
     	return new ArrayList();
 
     }
 
-    public static List  getListForAddOrInsert()
+    @SuppressWarnings("rawtypes")
+	public static List  getListForAddOrInsert()
     {
     	return new LinkedList();
 
     }
 
-    public static List  getListForRemove()
+    @SuppressWarnings("rawtypes")
+	public static List  getListForRemove()
     {
     	return new LinkedList();
 
