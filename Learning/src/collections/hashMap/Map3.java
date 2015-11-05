@@ -15,7 +15,7 @@ public class Map3
 	
  HashMap<String, String> m = createMap();
  removeTheFirstNameDuplicates(m);
- for (HashMap.Entry<String, String> pair : m.entrySet())
+for (HashMap.Entry<String, String> pair : m.entrySet())
     {
         String key = pair.getKey();                      //ключ
         String value = pair.getValue();                  //значение
@@ -31,7 +31,7 @@ public class Map3
         map.put ("4Остаdпчук", "Сергеcvbй");
         map.put ("5Остапчxcvbук", "Сергей");
         map.put ("6Остdddапчук", "Сергей");
-        map.put ("7Остапчук", "Серxcvbгей");
+        map.put ("7Остапчук", "Серxcv11bгей");
         map.put ("8Остdаdпчук", "Сеdddргей");
         map.put ("9Остаxcvbxcvbпчук", "Сергей");
         map.put ("10Остаddпчук", "Сергей");
@@ -41,21 +41,28 @@ public class Map3
 
     public static void removeTheFirstNameDuplicates(HashMap<String, String> map)
     {	 
-    	String key="";
-        int e=0;
-        HashMap<String, String> copy = new HashMap<String, String>(map);
-        for (Map.Entry<String, String> pair: copy.entrySet())
-        {
-            if ((pair.getValue().equals(value)&&(e==0))){
-                e++;
-                key=pair.getKey();
-            }else
-            if ((pair.getValue().equals(value))&&(e>0))
-            {
-                map.remove(key);
-                map.remove(pair.getKey());
+
+        HashMap<String, String> copy1 = new HashMap<String, String>(map);
+        HashMap<String, String> copy2 = new HashMap<String, String>(map);
+        Iterator<Map.Entry<String, String>> iterator1 = copy1.entrySet().iterator();
+       
+        while (iterator1.hasNext())
+        {          
+            Map.Entry<String, String> pair1 = iterator1.next();
+           //System.out.println(pair1.getValue()+"*****************");  - debug 
+            Iterator<Map.Entry<String, String>> iterator2 = copy2.entrySet().iterator();
+            while(iterator2.hasNext()){
+            	
+            Map.Entry<String, String> pair2 = iterator2.next();
+           
+            if (pair2.getValue().equals(pair1.getValue())&&!pair2.getKey().equals(pair1.getKey()))   {
+            //	System.out.println("!!!!!!!!!!!!!!!!!!!!!!"); - debug
+            	map.remove(pair1.getKey());
             }
+           
+            }   
         }
+       
     }
 
     public static void removeItemFromMapByValue(HashMap<String, String> map, String value)
