@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Random;
 
-public class SetTheNumbr {
+public class PlayWithCat {
 static int secret;
 
 public static void main(String[] args) throws NumberFormatException, IOException {
@@ -24,5 +24,6 @@ public static void main(String[] args) throws NumberFormatException, IOException
 		if (i == 6) {murzic.lose(); break;}
 		}
 	}
+
 }
 
