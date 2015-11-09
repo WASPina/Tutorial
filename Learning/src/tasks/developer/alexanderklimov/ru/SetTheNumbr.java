@@ -14,13 +14,15 @@ public static void main(String[] args) throws NumberFormatException, IOException
 	Random random = new Random();
 	int secret;
 	// Генерируем число от 0 до 100
-	secret = random.nextInt(100) + 1;
+	secret = random.nextInt(20) + 1;
 	Cat murzic = new Cat(secret);
 	BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	for (int i = 0; i<7;i++) {
 		int num = Integer.parseInt(reader.readLine());
-		murzic.give(num);
-		
+		if (i <= 5) murzic.give(num);
+		if (num == secret) {murzic.zergood(); break;}
+		if (i == 6) {murzic.lose(); break;}
+		}
 	}
 }
-}
+
