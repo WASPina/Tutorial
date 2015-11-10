@@ -48,8 +48,8 @@ public static int [] sorting (int [] array, int random) {
 		}
 		if (array[i] == random) {		//тут треба впаяти цикл із пошуку подальшого значення в масиві, що не рівне рандомному інту
 			int c = array[i];
-			array[i] = array[i+(j-i)/2];
-			array[i+(j-i)/2] = c;
+			array[i] = array[(i+(j-i)/2)+1];
+			array[(i+(j-i)/2)+1] = c;
 		}
 		if (array[i] == array[i+1] && array[i] == random || array[j] == array[j-1] && array[j] == random){
 			int c = array[i];
