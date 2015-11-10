@@ -81,11 +81,10 @@ public static int [] sorting (int [] array, int random) {
 	} 
 //добиваєм серединку...
 	for (int i = 0; i < array.length-1; i++) {
-			if (array[i] >= array[i+1] && array[i] >= random) {
+			if (array[i] > array[i+1] && array[i] > random) {
 				int c = array[i];
 				array[i] = array[i+1];
 				array[i+1] = c;
-				break;
 			}
 		}	
 	return array;
