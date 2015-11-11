@@ -31,10 +31,12 @@ public static void arrayPrint (ArrayList<Integer> resultList) {
 public static int [] sorting (int [] array, int random) {
 	int randomCounter = 0;
 	int numberOfMach = 0;
+	//Цикл для того, щоб забронювати місце в масиві для цифер, які співпали із тою, що випала як визначаюча (Separation number)
 	for (int i = 0; i < array.length; i++) {
 		if (array[i] < random) numberOfMach++;
 		if (array[i] == random) randomCounter++;
 	}
+	//Цикли для сортування
 	for (int i = 0; i < array.length; i++) {
 		if (array[i] == random && (i < numberOfMach || i > numberOfMach+randomCounter-1)) {
 			for (int j = numberOfMach; j <= numberOfMach+randomCounter-1; j++)
