@@ -6,13 +6,13 @@ public class SeparatingIntArray {
 	static Random rand = new Random();
 
 public static int[] createArray () {
-	int [] array = new int[100];
-	for (int i=0; i<100;i++) 		array[i] = rand.nextInt(300);
+	int [] array = new int[10];
+	for (int i=0; i<10;i++) 		array[i] = rand.nextInt(10);
 	return array;
 }
 	
 public static int getRandomAim () {
-	int a = rand.nextInt(300);
+	int a = rand.nextInt(10);
 	return a;
 }
 
@@ -33,29 +33,17 @@ public static void arrayPrint (ArrayList<Integer> resultList) {
 }*/
 public static int [] sorting (int [] array, int random) {
 	int randomCounter = 0;
+	int numberOfMach = 0;
 //лічильник співпадінь для того, щоб "забронювати" місце для елементів, що співпали з рандомним інтом, десь посередині відсортованого масиву..
 	for (int i = 0; i < array.length-1; i++) {
 		if (array[i] == random) randomCounter++;
+		if (array[i] < random) numberOfMach++;
 	}
 	System.out.println("Matches with the separation number: " + randomCounter); //for debugging
+	System.out.println("Past the first mach to the cell # " + numberOfMach); //for debugging
 	
-	for (int i = 0, j = array.length-1; j - i > randomCounter+2;  ){
-// що робити, якщо елемент масиву співпав із рандомним числом
-		if (array[j] == random)  {
-			int c = array[j];			//тут треба впаяти цикл із пошуку подальшого значення в масиві, що не рівне рандомному інту
-			array[j] = array[(i+(j-i)/2)-1];
-			array[(i+(j-i)/2)-1] = c;
-		}
-		if (array[i] == random) {		//тут треба впаяти цикл із пошуку подальшого значення в масиві, що не рівне рандомному інту
-			int c = array[i];
-			array[i] = array[(i+(j-i)/2)+1];
-			array[(i+(j-i)/2)+1] = c;
-		}
-		if (array[i] == array[i+1] && array[i] == random || array[j] == array[j-1] && array[j] == random){
-			int c = array[i];
-			array[i] = array[i+(j-i)/2];
-			array[i+(j-i)/2] = c;
-		}
+	for (int i = 0, j = array.length-1; i < numberOfMach || j > (numberOfMach + randomCounter);){
+
 // що робити, якщо елемент масиву не співпав із рандомним числом
 		if (array[i]>random && array[j]<random){
 			int c = array[i];
@@ -80,13 +68,13 @@ public static int [] sorting (int [] array, int random) {
 		}
 	} 
 //добиваєм серединку...
-	for (int i = 0; i < array.length-1; i++) {
+	/*for (int i = 0; i < array.length-1; i++) {
 			if (array[i] > array[i+1] && array[i] > random) {
 				int c = array[i];
 				array[i] = array[i+1];
 				array[i+1] = c;
 			}
-		}	
+		}	*/
 	return array;
 }
 //Чіпятаєм
