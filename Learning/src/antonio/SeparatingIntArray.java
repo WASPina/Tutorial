@@ -7,12 +7,12 @@ public class SeparatingIntArray {
 
 public static int[] createArray () {
 	int [] array = new int[10];
-	for (int i=0; i<10;i++) 		array[i] = rand.nextInt(10);
+	for (int i=0; i<10;i++) 		array[i] = rand.nextInt(5);
 	return array;
 }
 	
 public static int getRandomAim () {
-	int a = rand.nextInt(10);
+	int a = rand.nextInt(5);
 	return a;
 }
 
@@ -35,15 +35,30 @@ public static int [] sorting (int [] array, int random) {
 	int randomCounter = 0;
 	int numberOfMach = 0;
 //лічильник співпадінь для того, щоб "забронювати" місце для елементів, що співпали з рандомним інтом, десь посередині відсортованого масиву..
+	
 	for (int i = 0; i < array.length-1; i++) {
-		if (array[i] == random) randomCounter++;
 		if (array[i] < random) numberOfMach++;
 	}
+	for (int i = 0; i < array.length-1; i++) {
+		if (array[i] == random) randomCounter++;
+	}
+	
+	int helper = numberOfMach;
+	for (int i = 0; i < array.length-1; i++) {
+		if (array[i] == random && (i < numberOfMach || i > numberOfMach+randomCounter)) {
+			int c = array[i];
+			array[i] = array[helper];
+			array[helper] = c;
+			helper++;
+		}
+	}
+
+	
 	System.out.println("Matches with the separation number: " + randomCounter); //for debugging
 	System.out.println("Past the first mach to the cell # " + numberOfMach); //for debugging
 	
-	for (int i = 0, j = array.length-1; i < numberOfMach || j > (numberOfMach + randomCounter);){
-
+/*	for (int i = 0, j = array.length-1; i < numberOfMach-1 || j > (numberOfMach + randomCounter)+1;){
+		int helper = numberOfMach;
 // що робити, якщо елемент масиву не співпав із рандомним числом
 		if (array[i]>random && array[j]<random){
 			int c = array[i];
@@ -66,7 +81,7 @@ public static int [] sorting (int [] array, int random) {
 		if (array[i]<random && array[j]>random) {
 			i++; j--;
 		}
-	} 
+	} */
 //добиваєм серединку...
 	/*for (int i = 0; i < array.length-1; i++) {
 			if (array[i] > array[i+1] && array[i] > random) {
