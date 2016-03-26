@@ -5,24 +5,31 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Program {
-	private Deal[] deals;
+	private Deal[] deals = new Deal[10];
+	int tail = 0;
 	public Deal input(){
-		String bayerName = keyboard();
-		Party bayer = new Party();
-		bayer.setName(bayerName);
+		inputParty();
+		inputParty();
+		inputProducts();
+		inputProducts();
+		inputProducts();
+		
 	}
 	
 	
 	
-	public Party inputBayer(){
+	public Party inputParty(){
 		//TODO
 	}
-	public Party inputSeller(){
+	public Product inputProducts(){
 		//TODO
 	}
+	
 	public String keyboard() throws IOException{
-		BufferedReader read = new BufferedReader (new InputStreamReader(System.in));
-		String s = read.readLine();
+		BufferedReader bayer = new BufferedReader (new InputStreamReader(System.in));
+		BufferedReader seller = new BufferedReader (new InputStreamReader(System.in));
+		String b = bayer.readLine();
+		String s = seller.readLine();
 		return s;
 	}
 	
