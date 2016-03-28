@@ -96,9 +96,22 @@ public class Program {
 	}
 
 	private Party inputParty() throws IOException {
-		String partyName = keyboard("Party name");
+		String partyName = keyboard("    Party name");
+		String address = keyboard("    Party address");
+
+		String[] keys = new String[2];
+		String[] values = new String[2];
+
+		for (int i = 0; i < values.length; i++) {
+			keys[i] = keyboard("    Key" + (i + 1));
+			values[i] = keyboard("    Value" + (i + 1));
+		}
+
 		Party party = new Party();
 		party.setName(partyName);
+		party.setAddress(address);
+		party.setKey(keys);
+		party.setValue(values);
 		return party;
 	}
 
@@ -122,6 +135,17 @@ public class Program {
 
 			System.out.println("Sum: " + deal.getSumm());
 			System.out.println("----------------------------");
+			
+			outputParty(deal.getBayer());
+			outputParty(deal.getSeller());
+		}
+	}
+	private void outputParty(Party party) {
+		System.out.println(party.getName() + ":");
+		System.out.println("Address: " + party.getAddress());
+		for (int i = 0; i < party.getKey().length; i++) {
+			System.out.println("  " + party.getKey()[i] + " = "
+					+ party.getValue()[i]);
 		}
 	}
 	
