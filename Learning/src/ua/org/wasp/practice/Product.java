@@ -1,9 +1,13 @@
 package ua.org.wasp.practice;
 
-public class Product {
+public abstract class Product {
+	public static final int DEEDISKNT = 10;
 	private String title;
 	private double price;
 	private int quantity;
+	
+	
+	
 	public String getTitle() {
 		return title;
 	}
@@ -24,6 +28,15 @@ public class Product {
 	}
 	
 	public double getCost () {
-		return quantity*price;
+		double realCost = quantity*price; 
+		return realCost - realCost*calcDiscount()/100;
+	}
+	
+	protected int calcDiscount() {
+		if (quantity > 10) {
+			return DEEDISKNT;
+		}
+		else 
+			return 0;
 	}
 }

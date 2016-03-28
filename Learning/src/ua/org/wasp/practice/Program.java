@@ -5,37 +5,124 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Program {
-	private Deal[] deals = new Deal[10];
-	int tail = 0;
-	public Deal input(){
-		inputParty();
-		inputParty();
-		inputProducts();
-		inputProducts();
-		inputProducts();
-		
-	}
-	
-	
-	
-	public Party inputParty(){
-		Party bay = new Party ();
-		System.out.print("input seller");//TODO
-		Party.setName (keyboard());
-	}
-	public Product inputProducts(){
-		//TODO
-	}
-	
-	public String keyboard() throws IOException{
-		BufferedReader command = new BufferedReader (new InputStreamReader(System.in));
-		String s = command.readLine();
-		return s;
-	}
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
+	private static final int MAX_PRODUCTS = 2;
+	private static final int MAX_DEALS = 2;
+
+	private Deal[] deals;
+
+	/**
+	 * Program's entry point
+	 * 
+	 * @param args
+	 *            command line arguments
+	 * @throws IOException 
+	 */
+	public static void main(String[] args) throws IOException {
+		new Program().allActions();
 	}
 
+	private void allActions() throws IOException {
+		input();
+		System.out.println("================================");
+		output();
+	}
+	
+	private void input() throws IOException {
+		deals = new Deal[MAX_DEALS];
+
+		for (int i = 0; i < deals.length; i++) {
+			System.out.print((i + 1) + " of " + deals.length + ": ");
+			deals[i] = inputDeal();
+		}
+	}
+
+	private Deal inputDeal() throws IOException {
+		System.out.println("Input deal ->");
+
+		System.out.print("  Seller -> ");
+		Party seller = inputParty();
+
+		System.out.print("  Buyer -> ");
+		Party buyer = inputParty();
+
+		Product[] products = new Product[MAX_PRODUCTS];
+		for (int i = 0; i < products.length; i++) {
+			products[i] = inputProduct();
+		}
+
+		Deal deal = new Deal(buyer, seller, products);
+		return deal;
+	}
+
+	private Product inputProduct() throws IOException {
+		System.out.println("  Input product ->");
+
+		String productType = keyboard("    1 - Foto, 2 - Botinki");
+
+		String title = keyboard("    Name");
+		String price = keyboard("    Price");
+		String quan = keyboard("    Quantity");
+
+		Product product = null;
+
+		if (productType.equals("1")) {
+			String megapx = keyboard("    Megapixel");
+			String digital = keyboard("    True - Digital, False - Non-Digital");
+
+			PhotoProduct fotoProduct = new PhotoProduct();
+			fotoProduct.setDigital(Boolean.valueOf(digital));
+			fotoProduct.setMegapix(Double.valueOf(megapx));
+
+			product = fotoProduct;
+		} else if (productType.equals("2")) {
+			String size = keyboard("    Size");
+			String color = keyboard("    Color");
+
+			BootsProduct botinkiProduct = new BootsProduct();
+			botinkiProduct.setSize(Integer.valueOf(size));
+			botinkiProduct.setColor(color);
+
+			product = botinkiProduct;
+		} else {
+			System.err.println("Unknown product");
+			System.exit(-1);
+		}
+		product.setTitle(title);
+		product.setPrice(Double.valueOf(price));
+		product.setQuantity(Integer.valueOf(quan));
+
+		return product;
+	}
+
+	private Party inputParty() throws IOException {
+		String partyName = keyboard("Party name");
+		Party party = new Party();
+		party.setName(partyName);
+		return party;
+	}
+
+	private String keyboard(String message) throws IOException {
+		System.out.print(message + ": ");
+		BufferedReader read = new BufferedReader (new InputStreamReader(System.in));
+		return read.readLine();
+	}
+
+	private void output() {
+		for (Deal deal : deals) {
+			System.out.println("Deal " + deal.getDate());
+			System.out.println("    " + deal.getBayer().getName()
+					+ " buys from " + deal.getSeller().getName());
+
+			for (Product product : deal.getProducts()) {
+				System.out.println("        " + product.getTitle() + " "
+						+ product.getQuantity() + " x " + product.getPrice()
+						+ " = " + product.getCost());
+			}
+
+			System.out.println("Sum: " + deal.getSumm());
+			System.out.println("----------------------------");
+		}
+	}
+	
 }
