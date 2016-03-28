@@ -19,17 +19,17 @@ public class Program {
 	
 	
 	public Party inputParty(){
-		//TODO
+		Party bay = new Party ();
+		System.out.print("input seller");//TODO
+		Party.setName (keyboard());
 	}
 	public Product inputProducts(){
 		//TODO
 	}
 	
 	public String keyboard() throws IOException{
-		BufferedReader bayer = new BufferedReader (new InputStreamReader(System.in));
-		BufferedReader seller = new BufferedReader (new InputStreamReader(System.in));
-		String b = bayer.readLine();
-		String s = seller.readLine();
+		BufferedReader command = new BufferedReader (new InputStreamReader(System.in));
+		String s = command.readLine();
 		return s;
 	}
 	
