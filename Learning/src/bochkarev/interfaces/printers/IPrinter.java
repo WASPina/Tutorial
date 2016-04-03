@@ -1,5 +1,5 @@
 package bochkarev.interfaces.printers;
 
 public interface IPrinter {
-	public void print (String text);
+	public void print(String text);
 }
