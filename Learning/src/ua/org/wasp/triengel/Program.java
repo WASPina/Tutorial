@@ -4,36 +4,33 @@ public class Program {
 	private static Dot a;
 	private static Dot b;
 	private static Dot c;
-	private static Vector v1;
-	private static Vector v2;
-	private static Vector v3;
-	private static Checker ch;
+	private static Dot answer;
 
 	public static void main(String[] args) {
 		System.out.println("Enter coordinates of first Point");
-		a = new Dot(0, 2);
+		a = new Dot(3, 0);
 		System.out.println("Enter coordinates of second Point");
-		b = new Dot(0, 0);
+		b = new Dot(0, 2);
 		System.out.println("Enter coordinates of third Point");
-		c = new Dot(2, 0);
+		c = new Dot(0, 0);
 
-		v1 = new Vector(a, b);
-		v2 = new Vector(b, c);
-		v3 = new Vector(a, c);
+		GipotenuzeDefinerAndOrderer.gipotenuzeDefinerAndOrderer(a, b, c);
 
-		ch = new Checker();
+		System.out.println("a is center? - " + a.isCenter());
+		System.out.println("b is center? - " + b.isCenter());
+		System.out.println("c is center? - " + c.isCenter());
 
-		if (ch.isAngle(v1, v2)) {
-			System.out.println("(" + a.getX() +"," + a.getY() + ")" + "(" + b.getX()+ ","+  b.getY()+")");
-			System.out.println("(" + b.getX() +"," + b.getY() + ")" + "(" + c.getX()+ ","+  c.getY()+")");
-			Calc cal = new Calc (v1,v2);
-			Dot four = cal.getFour();
-			System.out.println ("(" + four.getX() +"," + four.getY() + ")");
-		} else if (ch.isAngle(v2, v3)) {
-			System.out.println("V2.v3");
-		} else if (ch.isAngle(v1, v3)) {
-			System.out.println("V1.v3");
+		if (a.isCenter()) {
+			answer = Calc.calc(a, b, c);
+		} else
+		if (b.isCenter()) {
+			answer = Calc.calc(b, a, c);
+		} else
+		if (c.isCenter()) {
+			answer = Calc.calc(c, a, b);
 		}
-		;
+
+		System.out.println("Coordinates are (" + answer.getX() + ","
+				+ answer.getY() + ")");
 	}
 }
