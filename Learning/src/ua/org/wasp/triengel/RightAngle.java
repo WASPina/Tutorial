@@ -1,8 +1,8 @@
 package ua.org.wasp.triengel;
 
-public final class GipotenuzeDefinerAndOrderer {
+public final class RightAngle {
 	private static int POWER = 2;
-	public static void gipotenuzeDefinerAndOrderer (Dot a, Dot b, Dot c) {
+	public static void find (Dot a, Dot b, Dot c) {
 		double x1 = a.getX();
 		double y1 = a.getY();
 		double x2 = b.getX();

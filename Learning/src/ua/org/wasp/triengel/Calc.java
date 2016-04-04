@@ -15,8 +15,8 @@ public class Calc {
 		tempX = (x2 + x3)/2;
 		tempY = (y2 + y3)/2;
 		System.out.println(tempX + "......" + "......" + tempY);
-		x4 = ((tempX + x1) * 2);
-		y4 = ((tempY + y1) * 2);
+		x4 = 2 * tempX - x1;
+		y4 = 2 * tempY - y1;
 		Dot z = new Dot(x4, y4);
 		return z;
 

@@ -8,28 +8,21 @@ public class Program {
 
 	public static void main(String[] args) {
 		System.out.println("Enter coordinates of first Point");
-		a = new Dot(3, 0);
+		a = new Dot(-2, -4);
 		System.out.println("Enter coordinates of second Point");
-		b = new Dot(0, 2);
+		b = new Dot(-4, -2);
 		System.out.println("Enter coordinates of third Point");
-		c = new Dot(0, 0);
+		c = new Dot(2, 4);
 
-		GipotenuzeDefinerAndOrderer.gipotenuzeDefinerAndOrderer(a, b, c);
-
-		System.out.println("a is center? - " + a.isCenter());
-		System.out.println("b is center? - " + b.isCenter());
-		System.out.println("c is center? - " + c.isCenter());
+		RightAngle.find(a, b, c);
 
 		if (a.isCenter()) {
 			answer = Calc.calc(a, b, c);
-		} else
-		if (b.isCenter()) {
+		} else if (b.isCenter()) {
 			answer = Calc.calc(b, a, c);
-		} else
-		if (c.isCenter()) {
+		} else if (c.isCenter()) {
 			answer = Calc.calc(c, a, b);
 		}
-
 		System.out.println("Coordinates are (" + answer.getX() + ","
 				+ answer.getY() + ")");
 	}
