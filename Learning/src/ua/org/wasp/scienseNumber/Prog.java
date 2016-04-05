@@ -14,7 +14,8 @@ public class Prog {
 
 	public static void main(String[] args) {
 			a=10000;
-		for (int i = a; i <= 400000; i++) {
+		for (int i = a; i < 40000; i++) {
+			System.out.println(a);
 			b = a * 3;
 			someS = a.toString();
 			someRezS = b.toString();
@@ -22,8 +23,8 @@ public class Prog {
 				&& someS.charAt(4) == someRezS.charAt(1)
 				&& someS.charAt(0) == someRezS.charAt(3)
 				&& someS.charAt(1) == someRezS.charAt(0)) {
-				System.out.println(a);
-				System.out.println(b);
+//				System.out.println(a);
+//				System.out.println(b);
 				c++;
 			}
 			a++;
