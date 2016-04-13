@@ -1,43 +1,26 @@
 package zadachnik.trapezies;
 
 public class Line {
-	private int x1;
-	private int y1;
-	private int x2;
-	private int y2;
-	private double a;
+	private Dot a;
+	private Dot b;
+	private double angleCoeff;
 
-	public Line(int x1, int y1, int x2, int y2) {
-		this.x1 = x1;
-		this.y1 = y1;
-		this.x2 = x2;
-		this.y2 = y2;
+	public Line(Dot a, Dot b) {
+		this.a = a;
+		this.b = b;
 	}
 
-	public int getX1() {
-		return x1;
-	}
-
-	public int getY1() {
-		return y1;
-	}
-
-	public int getX2() {
-		return x2;
-	}
-
-	public int getY2() {
-		return y2;
-	}
-
-	public double getA() {
-		this.a = aCalc();
+	public Dot getA() {
 		return a;
-
 	}
 
-	private double aCalc() {
-		return this.y2 - this.y1;
+	public Dot getB() {
+		return b;
+	}
+
+	public double getAngeCoeff() {
+		angleCoeff = (a.getY()-b.getY())/(a.getX()-b.getX());
+		return angleCoeff;
 	}
 
 }
