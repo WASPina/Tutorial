@@ -29,7 +29,6 @@ public class Replacer {
 		IPrinter fuckPrinter = new FuckPrinter();
 		Replacer rep = new Replacer(reader, printer);
 		Replacer rep2 = new Replacer(reader, fuckPrinter);
-
 		rep.replace();
 		rep2.replace();
 

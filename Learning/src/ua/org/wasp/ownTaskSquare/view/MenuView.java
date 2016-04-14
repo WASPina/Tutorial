@@ -3,6 +3,8 @@ package ua.org.wasp.ownTaskSquare.view;
 import java.io.IOException;
 
 import ua.org.wasp.ownTaskSquare.builders.FigureBuilder;
+import ua.org.wasp.ownTaskSquare.builders.IFigureBuilder;
+import ua.org.wasp.ownTaskSquare.model.Dot;
 
 public class MenuView {
 
@@ -12,7 +14,7 @@ public class MenuView {
 	static final int CIRCLE = 4;
 	int choise;
 	ConsoleInputer reader;
-	FigureBuilder figureBuilder;
+	IFigureBuilder figureBuilder = new IFigureBuilder();
 
 	public void showMenu() throws IOException {
 		System.out.println("Choose the figure:");
