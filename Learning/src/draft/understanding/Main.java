@@ -12,42 +12,53 @@ import java.io.IOException;
 //
 
 public class Main {
+	static private int NUMBER_OF_RECTANGLES = 1;
 
 	public static void main(String[] args) {
-		Rectangle recs[] = new Rectangle[5];
-		
+		Rectangle recs[] = new Rectangle[NUMBER_OF_RECTANGLES];
+		Square sq = null;
+
 		try {
 			for (int i = 0; i < recs.length; i++) {
-				System.out.print("Give me a first rib of rectangle #" + (i + 1) + " >");
-				int rib1Length = ConsoleReader.takeInput();
-				System.out.print("Give me a second rib of rectangle #" + (i + 1) + " >");
-				int rib2Length = ConsoleReader.takeInput();
+				Dot a = new Dot();
+				Dot b = new Dot();
+				Rib l1 = new Rib(a, b);
+				Dot c = new Dot();
+				Dot d = new Dot();
+				Rib l2 = new Rib(c, d);
+				System.out.println("That is enough to build a rectangle");
+				recs[i] = new Rectangle(l1, l2);
 
-				Rib a = new Rib(rib1Length);
-				Rib b = new Rib(rib2Length);
-
-				recs[i] = new Rectangle(a, b);
 			}
-		
+
+			Dot e = new Dot();
+			Dot f = new Dot();
+			Rib l3 = new Rib(e, f);
+			System.out.println("That is enough to build a squere");
+			sq = new Square(l3);
+
 		} catch (NumberFormatException e) {
-			System.err.println("Input incorrect. The end of input.");
+			System.err.println("Input incorrect. The end of input. FUCK YOU!");
 		} catch (IOException e) {
-			System.err.println("Input incorrect. The end of input.");
+			System.err.println("Input incorrect. The end of input. FUCK YOU!");
 		}
-		
+
 		System.out.println("=======================================");
-		
-		
+
 		try {
-			int i = 0;
+			//int i = 0;
 			for (Rectangle x : recs) {
 
-				SquareCalc calculator = new SquareCalc();
-				double squere = calculator.squereCalc(x);
+	
+				double squerer = Calculator.squereCalc(x);
 
-				System.out.println(squere + " is squere of shape #" + ++i);
+				System.out.println(squerer + " is squere of rectangle" /*+ ++i*/);
 				System.out.println("---------------------------------------");
 			}
-		} catch (NullPointerException e) {}
+			
+			double squere = Calculator.squereCalc(sq);
+			System.out.println( squere+ " is squere of squere");
+		} catch (NullPointerException e) {
+		}
 	}
 }
