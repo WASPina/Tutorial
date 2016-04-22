@@ -15,12 +15,12 @@ public class ConsoleReader {
 
 	static public int takeInput() throws IOException {
 
-		int ribLength;
+		int coord;
 		String stringInput;
 		stringInput = consoleReader.readInput();
 
-		ribLength = Integer.parseInt(stringInput);
-		return ribLength;
+		coord = Integer.parseInt(stringInput);
+		return coord;
 
 	}
 }
