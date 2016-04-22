@@ -12,7 +12,7 @@ import java.io.IOException;
 //
 
 public class Main {
-	static private int NUMBER_OF_RECTANGLES = 1;
+	final static private int NUMBER_OF_RECTANGLES = 1;
 
 	public static void main(String[] args) {
 		Rectangle recs[] = new Rectangle[NUMBER_OF_RECTANGLES];
@@ -50,13 +50,13 @@ public class Main {
 			for (Rectangle x : recs) {
 
 	
-				double squerer = Calculator.squereCalc(x);
+				double squerer = CalculatorUtils.squereCalc(x);
 
 				System.out.println(squerer + " is squere of rectangle" /*+ ++i*/);
 				System.out.println("---------------------------------------");
 			}
 			
-			double squere = Calculator.squereCalc(sq);
+			double squere = CalculatorUtils.squereCalc(sq);
 			System.out.println( squere+ " is squere of squere");
 		} catch (NullPointerException e) {
 		}

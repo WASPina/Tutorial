@@ -1,6 +1,7 @@
 package draft.understanding;
 
-public class Calculator {
+final public class CalculatorUtils {
+	private CalculatorUtils(){};
 
 	public static double squereCalc(Rectangle a) {
 		double squere = a.getA().getLength() * a.getB().getLength();
