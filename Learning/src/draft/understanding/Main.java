@@ -50,13 +50,13 @@ public class Main {
 			for (Rectangle x : recs) {
 
 	
-				double squerer = SquareCalc.squereCalc(x);
+				double squerer = Calculator.squereCalc(x);
 
 				System.out.println(squerer + " is squere of rectangle" /*+ ++i*/);
 				System.out.println("---------------------------------------");
 			}
 			
-			double squere = SquareCalc.squereCalc(sq);
+			double squere = Calculator.squereCalc(sq);
 			System.out.println( squere+ " is squere of squere");
 		} catch (NullPointerException e) {
 		}
